@@ -1,0 +1,10 @@
+Generations : 4
+Iterations : 10000
+
+Positive cases of generation 1 = 2792
+Positive cases of generation 2 = 2791
+Positive cases of generation 3 = 2818
+Positive cases of generation 4 = 2809
+
+Average result = 0.28025
+Time of program (hh:mm:ss) = 0:0:41

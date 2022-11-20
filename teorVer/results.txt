@@ -1,10 +1,56 @@
-Generations : 4
-Iterations : 10000
+Generations : 50
+Iterations : 1000000
 
-Positive cases of generation 1 = 2792
-Positive cases of generation 2 = 2791
-Positive cases of generation 3 = 2818
-Positive cases of generation 4 = 2809
+Positive cases of generation 1 = 282586
+Positive cases of generation 2 = 282789
+Positive cases of generation 3 = 282735
+Positive cases of generation 4 = 281651
+Positive cases of generation 5 = 281308
+Positive cases of generation 6 = 282659
+Positive cases of generation 7 = 282914
+Positive cases of generation 8 = 282486
+Positive cases of generation 9 = 281915
+Positive cases of generation 10 = 281945
+Positive cases of generation 11 = 282397
+Positive cases of generation 12 = 282057
+Positive cases of generation 13 = 282013
+Positive cases of generation 14 = 282172
+Positive cases of generation 15 = 282923
+Positive cases of generation 16 = 283307
+Positive cases of generation 17 = 282654
+Positive cases of generation 18 = 282693
+Positive cases of generation 19 = 282392
+Positive cases of generation 20 = 282076
+Positive cases of generation 21 = 282057
+Positive cases of generation 22 = 281906
+Positive cases of generation 23 = 282371
+Positive cases of generation 24 = 281959
+Positive cases of generation 25 = 282589
+Positive cases of generation 26 = 281869
+Positive cases of generation 27 = 282238
+Positive cases of generation 28 = 281353
+Positive cases of generation 29 = 282480
+Positive cases of generation 30 = 282365
+Positive cases of generation 31 = 282236
+Positive cases of generation 32 = 281987
+Positive cases of generation 33 = 282873
+Positive cases of generation 34 = 282135
+Positive cases of generation 35 = 283204
+Positive cases of generation 36 = 281987
+Positive cases of generation 37 = 281858
+Positive cases of generation 38 = 282478
+Positive cases of generation 39 = 282891
+Positive cases of generation 40 = 282181
+Positive cases of generation 41 = 282054
+Positive cases of generation 42 = 282774
+Positive cases of generation 43 = 282838
+Positive cases of generation 44 = 282128
+Positive cases of generation 45 = 281989
+Positive cases of generation 46 = 281961
+Positive cases of generation 47 = 282727
+Positive cases of generation 48 = 282145
+Positive cases of generation 49 = 282127
+Positive cases of generation 50 = 282197
 
-Average result = 0.28025
-Time of program (hh:mm:ss) = 0:0:41
+Average result = 0.282313
+Time of program (hh:mm:ss) = 10:26:6

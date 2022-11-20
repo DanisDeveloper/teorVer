@@ -1,17 +1,23 @@
+/*
+ƒано 36 карт. ¬ыт€гивают 3 случайные карты.
+Ќайти веро€тность, что все выт€нутые карты окажутс€ разных мастей и номиналов
+*/
+
+
 #include <iostream>
 #include<random>
 #include<vector>
 #include<chrono>
 #include<string>
 #include<fstream>
-#include<thread>
 
-const int generations = 4;
-const int iterations = 1'0'000;
+const int generations = 50;
+const int iterations = 1'000'000;
 
 bool contains(std::vector<std::pair<int, int>> cards, std::pair<int, int> card);
 bool isUnique(std::vector<std::pair<int, int>> cards);
 std::string convertSecond(long long seconds);
+int generation(int g);
 
 int main(){
 	auto start_program = std::chrono::high_resolution_clock::now();
@@ -19,42 +25,7 @@ int main(){
 	int counterOfGenerations[generations];
 	for (int g = 0; g < generations; g++) // поколени€ нужны, чтобы имитировать запуск программы несколько раз
 	{
-		//хороший рандомайзер
-		std::random_device rd;
-		std::mt19937 mt(rd());
-		std::uniform_int_distribution<> randMast(0, 3);
-		std::uniform_int_distribution<> randNominal(6, 14);
-
-		int counterPositiveCases = 0;
-		for (int i = 0; i < iterations; i++) {
-			std::cout << "generation = " << g + 1 << "\titer = " << i + 1;
-			// генераци€ 3 карт
-			std::vector<std::pair<int, int>> threeCards{ {0,0},{0,0},{0,0} };
-			for (int j = 0; j < 3; j++)
-			{
-				bool flag = true;
-				while (flag) {
-					std::pair<int, int> card = std::make_pair(randMast(mt), randNominal(mt));
-					if (!contains(threeCards, card)) {
-						threeCards[j] = card;
-						flag = false;
-					}
-				}
-			}
-			std::cout << "\tCards =";
-			for (int k = 0; k < 3; k++)
-			{
-				std::cout << "\t{" << threeCards[k].first << ", " << threeCards[k].second << "}, ";
-			}
-			//
-
-			if (isUnique(threeCards)) {
-				std::cout << "\tUnique";
-				counterPositiveCases++;
-			}
-			std::cout << std::endl;
-		}
-		counterOfGenerations[g] = counterPositiveCases;
+		counterOfGenerations[g] = generation(g);
 		std::cout << std::endl;
 	}
 
@@ -77,6 +48,8 @@ int main(){
 	std::string time_str = convertSecond(std::chrono::duration_cast<std::chrono::seconds>(time).count());
 	std::cout << "Time of program (hh:mm:ss) = " << time_str << std::endl;
 
+
+	//запись результатов в файл
 	std::fstream file;
 	file.open("results.txt", std::fstream::out);
 	if (file.is_open()) {
@@ -90,7 +63,6 @@ int main(){
 		file << "Time of program (hh:mm:ss) = " << time_str << std::endl;
 	}
 }
-
 
 bool contains(std::vector<std::pair<int, int>> cards, std::pair<int, int> card) {
 	for (int i = 0; i < cards.size(); i++)
@@ -119,4 +91,43 @@ std::string convertSecond(long long seconds) {
 	long long minutes = seconds / 60;
 	seconds %= 60;
 	return std::to_string(hours) + ":" + std::to_string(minutes) + ":" + std::to_string(seconds);
+}
+
+int generation(int g) {
+	//хороший рандомайзер
+	std::random_device rd;
+	std::mt19937 mt(rd());
+	std::uniform_int_distribution<> randMast(0, 3);
+	std::uniform_int_distribution<> randNominal(6, 14);
+
+	int counterPositiveCases = 0;
+	for (int i = 0; i < iterations; i++) {
+		std::cout << "generation = " << g + 1 << "\titer = " << i + 1;
+		// генераци€ 3 карт
+		std::vector<std::pair<int, int>> threeCards{ {0,0},{0,0},{0,0} };
+		for (int j = 0; j < 3; j++)
+		{
+			bool flag = true;
+			while (flag) {
+				std::pair<int, int> card = std::make_pair(randMast(mt), randNominal(mt));
+				if (!contains(threeCards, card)) {
+					threeCards[j] = card;
+					flag = false;
+				}
+			}
+		}
+		std::cout << "\tCards =";
+		for (int k = 0; k < 3; k++)
+		{
+			std::cout << "\t{" << threeCards[k].first << ", " << threeCards[k].second << "}, ";
+		}
+		//
+
+		if (isUnique(threeCards)) {
+			std::cout << "\tUnique";
+			counterPositiveCases++;
+		}
+		std::cout << std::endl;
+	}
+	return counterPositiveCases;
 }
